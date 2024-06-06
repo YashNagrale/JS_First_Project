@@ -7,16 +7,19 @@ const str4 = "4. Exit";
 let entries = [];
 
 const entryProgram = () => {
-  const enteredValue = prompt(
-    str0 + "\n" + str1 + "\n" + str2 + "\n" + str3 + "\n" + str4
-  );
+  let enteredValue;
+  do {
+    enteredValue = parseInt(
+      prompt("Enter what you want" +"\n" +"1. Enter entry" +"\n" +"2. List entries" +"\n" +"3. Search entries" +"\n" +"4. Exit"
+      )
+    );
 
-if(enteredValue > 4 || enteredValue == 0){
-  alert("Enter an valid option")
-  return
-}
+    if (isNaN(enteredValue) || enteredValue < 1 || enteredValue > 4) {
+      alert("Please enter a valid option between 1 and 4.");
+    }
+  } while (isNaN(enteredValue) || enteredValue < 1 || enteredValue > 4);
 
-  const searchEntries = () => {
+const searchEntries = () => {
     if (entries.length === 0) {
       alert("No entries found. Please add an entry first.");
       return;
@@ -77,8 +80,7 @@ if(enteredValue > 4 || enteredValue == 0){
   return enteredValue;
 };
 
-  let enteredValue;
-  do {
-    enteredValue = entryProgram();
-  } while (enteredValue != 4);
-
+let enteredValue;
+do {
+  enteredValue = entryProgram();
+} while (enteredValue != 4);
